@@ -1,46 +1,101 @@
 "use client";
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useEffect, useState } from "react";
 import { cn } from "../../lib/utils";
 
-export const BoxesCore = ({ className, ...rest }: any) => {
-  const rows = new Array(150).fill(1);
-  const cols = new Array(100).fill(1);
+export const Boxes = ({ className }: { className?: string }) => {
+  // Whether to show the blue flash
+  const [flash, setFlash] = useState(true);
+  const [hoverBox, setHoverBox] = useState<{ x: number; y: number } | null>(
+    null
+  );
+  const cell = 80; // grid cell size (px)
+
+  useEffect(() => {
+    const timer = setTimeout(() => setFlash(false), 1500); // play once
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Coordinates of UP boxes (absolute-positioned)
+  // These should match your original isUPBox() positions
+  const highlightBoxes = [
+    // U shape (example values, adjust as needed)
+    { x: 640, y: 160 },
+    { x: 640, y: 240 },
+    { x: 640, y: 320 },
+    { x: 640, y: 400 },
+    { x: 640, y: 480 },
+    { x: 640, y: 560 },
+    { x: 880, y: 160 },
+    { x: 880, y: 240 },
+    { x: 880, y: 320 },
+    { x: 880, y: 400 },
+    { x: 880, y: 480 },
+    { x: 880, y: 560 },
+    { x: 800, y: 560 },
+    { x: 720, y: 560 },
+
+    // P shape (example values)
+    { x: 1040, y: 160 },    
+    { x: 1040, y: 240 },
+    { x: 1040, y: 320 },
+    { x: 1040, y: 400 },
+    { x: 1040, y: 480 },
+    { x: 1040, y: 560 },
+    { x: 1120, y: 160 },
+    { x: 1200, y: 160 },
+    { x: 1280, y: 160 },
+    { x: 1280, y: 240 },
+    { x: 1280, y: 320 },
+    { x: 1120, y: 320 },
+    { x: 1200, y: 320 },
+  ];
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+
+    const x = Math.floor((e.clientX - rect.left) / cell) * cell;
+    const y = Math.floor((e.clientY - rect.top) / cell) * cell;
+
+    setHoverBox({ x, y });
+  };
 
   return (
     <div
-      style={{
-        transform: ``,
-      }}
       className={cn(
-        "absolute left-[41%] p-4 -top-1/2 flex -translate-x-1/2 -translate-y-1/2 w-full h-full z-0",
+        "absolute inset-0 overflow-hidden",
         className
       )}
-      {...rest}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={() => setHoverBox(null)}
     >
-      {rows.map((_, i) => (
-        <motion.div
-          key={`row` + i}
-          className="w-20 h-20 border-l border-slate-700/10 relative"
-        >
-          {cols.map((_, j) => (
-            <motion.div
-              whileHover={{
-                backgroundColor: "#c5daff",
-                transition: { duration: 0 },
-              }}
-              animate={{
-                transition: { duration: 1 },
-                // backgroundColor: "rgba(197, 218, 255, 0.15)",
-              }}
-              key={`col` + j}
-              className="w-20 h-20 border-r border-t border-slate-700/10 relative"
-            ></motion.div>
-          ))}
-        </motion.div>
+      {/* GRID */}
+      <div className="absolute inset-0 grid-background" />
+
+      {/* HIGHLIGHT BOXES */}
+      {highlightBoxes.map((b, i) => (
+        <div
+          key={i}
+          className={cn(
+            "absolute w-20 h-20",
+            flash ? "up-flash" : "bg-transparent"
+          )}
+          style={{
+            left: `${b.x}px`,
+            top: `${b.y}px`
+          }}
+        />
       ))}
+
+      {/* HOVER BOX */}
+      {hoverBox && (
+        <div
+          className="absolute w-20 h-20 bg-blue-200/50 transition-none"
+          style={{
+            left: hoverBox.x,
+            top: hoverBox.y,
+          }}
+        />
+      )}
     </div>
   );
 };
-
-export const Boxes = React.memo(BoxesCore);

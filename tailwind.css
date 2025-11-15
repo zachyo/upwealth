@@ -72,6 +72,29 @@
   scrollbar-color: #f15822 #f0f0f3;
 }
 
+/* GRID BACKGROUND */
+.grid-background {
+  background-size: 80px 80px;
+  background-image:
+    linear-gradient(to right, rgba(0,0,0,0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0,0,0,0.08) 1px, transparent 1px);
+}
+
+/* BLUE FLASH ANIMATION */
+@keyframes flashBlue {
+  0% {
+    background-color: rgba(147, 197, 253, 0.7); /* Tailwind blue-200 */
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+.up-flash {
+  animation: flashBlue 1.2s ease-out forwards;
+}
+
+
 @keyframes spin {
   to {
     transform: rotate(1turn);

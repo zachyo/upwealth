@@ -6,49 +6,15 @@ import Header from "../../partials/Header";
 import AboutUs from "../../partials/AboutUs";
 import { motion } from "framer-motion";
 import {
-  SlideBounceFromDown,
   SlideBounceFromUp,
   SlideDown,
 } from "../../lib/animation";
-import { positions } from "./utils";
+import Carousel from "./Carousel";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const circularMagazines = [
-  {
-    src: "/1.png",
-    alt: "Magazine cover",
-    position: "top-[7%] left-0",
-    reflection: "/reflection--1.svg",
-  },
-  {
-    src: "/2.png",
-    alt: "Magazine cover",
-    position: "top-[4.29%] left-[15.60%]",
-    reflection: "/reflection--4.svg",
-  },
-  {
-    src: "/3.png",
-    alt: "Magazine cover",
-    position: "top-0 left-[30.15%]",
-    reflection: "/reflection--3.svg",
-  },
-  {
-    src: "/4.png",
-    alt: "Magazine cover",
-    position: "top-[4.29%] left-[51.03%]",
-    reflection: "/reflection--2.svg",
-  },
-  {
-    src: "/5.png",
-    alt: "Magazine cover",
-    position: "top-[7%] left-[68.75%]",
-    reflection: "/reflection-.svg",
-  },
-];
 
 export const Static = (): JSX.Element => {
-  const sliderRef = useRef<HTMLDivElement>(null);
   const boxRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -79,55 +45,12 @@ export const Static = (): JSX.Element => {
     );
   }, []);
 
-  useEffect(() => {
-    if (!sliderRef.current) return;
 
-    const slides = gsap.utils.toArray<HTMLElement>(".magazine-slide");
-    const total = slides.length;
-
-    slides.forEach((slide, i) => {
-      const pos = positions[i];
-      gsap.set(slide, pos);
-    });
-
-    let index = 0;
-
-    const animate = () => {
-      const tl = gsap.timeline({
-        defaults: { duration: 1, ease: "power3.inOut" },
-      });
-
-      slides.forEach((slide, i) => {
-        // Determine new position after shift
-        const offset = (i - index + total) % total;
-        const pos = positions[offset];
-
-        tl.to(
-          slide,
-          {
-            left: pos.left,
-            top: pos.top,
-            width: pos.width,
-            height: pos.height,
-            zIndex: pos.zIndex,
-            scale: pos.scale,
-          },
-          0 // all animations start together
-        );
-      });
-
-      index = (index + 1) % total;
-    };
-
-    const interval = setInterval(animate, 1200);
-
-    return () => clearInterval(interval);
-  }, []);
 
   return (
-    <div className="bg-[#f0f0f3] w-full min-w-screen min-h-[2201px] flex flex-col">
+    <div className="bg-[#f0f0f3]">
       <section
-        className="w-screen h-screen relative bg-[#f0f0f3] overflow-hidden bg-stainless"
+        className="lg:min-h-screen relative bg-[#f0f0f3] overflow-hidden bg-stainless"
         style={{
           backgroundImage: "url(../../bg.png)",
         }}
@@ -135,81 +58,48 @@ export const Static = (): JSX.Element => {
         <motion.div initial="hidden" animate="visible" variants={SlideDown(0)}>
           <Header />
         </motion.div>
-        <div className="container">
-          <motion.div
-            className="absolute top-[202px] w-1/2 left-[6%] 2xl:left-[8%]"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: false, amount: 0.2 }}
-            variants={SlideBounceFromUp(0.2)}
-          >
-            <p className="text-[102px] max-w-2xl leading-[120px]">
-              Discover the Latest Issue of{" "}
-              <span className="bg-gradient-to-b from-[#D38D1A] from-40% to-[#343ADA] bg-clip-text text-transparent">
-                Upwealth
-              </span>{" "}
-              <span className="bg-gradient-to-b from-[#D38D1A] from-[0.1%] to-[#343ADA] to-95% bg-clip-text text-transparent">
-                Magazine
-              </span>
-            </p>
-            <p className="[font-family:'Montserrat',Helvetica] text-[20px] mb-6">
-              Stay informed with our insightful articles and expert advice.
-            </p>
-            <Button className="inline-flex w-[312px] h-auto hover:inner-color-hover hover:!text-[#df9420] items-start gap-2.5 px-10 py-4 bg-[#f0f0f3] rounded-lg overflow-hidden shadow-neomorphic focus:shadow-neomorphic-hover hover:bg-[#f0f0f3]">
-              <span className="[font-family:'Montserrat',Helvetica] font-semibold text-black text-xl whitespace-nowrap">
-                Subscribe Now!
-              </span>
-            </Button>
-            <br />
-            <br />
-            <br />
-            <Button className="inline-flex rounded-full h-auto hover:inner-color-hover hover:!text-[#df9420] items-start gap-2.5 px-6 py-4 bg-[#f0f0f3] overflow-hidden shadow-neomorphic focus:shadow-neomorphic-hover hover:bg-[#f0f0f3]">
-              <span className="[font-family:'Montserrat',Helvetica] font-semibold text-black text-xl whitespace-nowrap">
-                <img src="../../../Vector (7).svg" alt="" />
-              </span>
-            </Button>
-          </motion.div>        
+        <div className="container flex flex-col lg:flex-row pt-[170px] pb-0 lg:pb-[170px] gap-8">
+          <section className="lg:w-1/2">
+            <motion.div
+              // className=" w-1/2"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.2 }}
+              variants={SlideBounceFromUp(0.2)}
+            >
+              <p className="text-[90px] leading-[120px]">
+                Discover the Latest Issue of{" "}
+                <span className="bg-gradient-to-b from-[#D38D1A] from-40% to-[#343ADA] bg-clip-text text-transparent">
+                  Upwealth
+                </span>{" "}
+                <span className="bg-gradient-to-b from-[#D38D1A] from-[0.1%] to-[#343ADA] to-95% bg-clip-text text-transparent">
+                  Magazine
+                </span>
+              </p>
+              <p className="[font-family:'Montserrat',Helvetica] text-[20px] mb-6">
+                Stay informed with our insightful articles and expert advice.
+              </p>
+              <Button className="inline-flex w-[312px] h-auto hover:inner-color-hover hover:!text-[#df9420] items-start gap-2.5 px-10 py-4 bg-[#f0f0f3] rounded-lg overflow-hidden shadow-neomorphic focus:shadow-neomorphic-hover hover:bg-[#f0f0f3]">
+                <span className="[font-family:'Montserrat',Helvetica] font-semibold text-black text-xl whitespace-nowrap">
+                  Subscribe Now!
+                </span>
+              </Button>
+              <br />
+              <br />
+              <br />
+              <Button className="inline-flex rounded-full h-auto hover:inner-color-hover hover:!text-[#df9420] items-start gap-2.5 px-6 py-4 bg-[#f0f0f3] overflow-hidden shadow-neomorphic focus:shadow-neomorphic-hover hover:bg-[#f0f0f3]">
+                <span className="[font-family:'Montserrat',Helvetica] font-semibold text-black text-xl whitespace-nowrap">
+                  <img src="../../../Vector (7).svg" alt="" />
+                </span>
+              </Button>
+            </motion.div>
+          </section>
 
-          <motion.div
-            initial="hidden"
-            // animate="visible"
-            whileInView="visible"
-            viewport={{ once: false, amount: 0.2 }}
-            variants={SlideBounceFromDown(0.2)}
-            ref={sliderRef}
-            className="lg:absolute top-[202px] left-[52%] w-[724px] 2xl:w-[784px] h-[1062px]"
-          >
-            {circularMagazines.map((magazine, index) => {
-              const isLarge = index === 2;
-              const isMedium = index === 1 || index === 3;
-              const widthClass = isLarge
-                ? "w-[41.69%]"
-                : isMedium
-                ? "w-[35.43%]"
-                : "w-[31.25%]";
-              const heightClass = isLarge
-                ? "h-full"
-                : isMedium
-                ? "h-[85.00%]"
-                : "h-[74.97%]";
-
-              return (
-                <div
-                  key={index}
-                  className={`magazine-slide absolute ${widthClass} ${heightClass} ${magazine.position}`}
-                >
-                  <img
-                    className="absolute w-full top-0 left-0 object-cover"
-                    alt={magazine.alt}
-                    src={magazine.src}
-                  />
-                </div>
-              );
-            })}
-          </motion.div>
+          <section className="lg:w-1/2 pt-10">
+            <Carousel/>
+          </section>
         </div>
       </section>
-
       <AboutUs />
     </div>
   );

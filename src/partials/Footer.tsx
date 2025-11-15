@@ -10,7 +10,7 @@ export default function Footer() {
     >
       <div className="max-w-7xl mx-auto">
         {/* Main content */}
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex flex-col lg:flex-row gap-9 lg:gap-0 items-center justify-between mb-8">
           {/* Logo */}
           <div className="mt-[5.2px] w-[211px] h-[41.56px] bg-[url(/upwealth-text-logo-1.svg)] bg-[100%_100%]" />
 
