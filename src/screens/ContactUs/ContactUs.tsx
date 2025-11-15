@@ -34,7 +34,7 @@ const ContactUs = () => {
           whileInView="visible"
           variants={SlideUp(0.9)}
           viewport={{ once: false, amount: 0.2 }}
-          className="relative z-[9] text-center shadow-neomorphic rounded-2xl bg-[#F0F0F3] mt-20 lg:mt-12 p-10 pb-16"
+          className="relative z-[9] text-center shadow-neomorphic rounded-2xl bg-[#F0F0F3] py-8 mt-6"
         >
           <p className="text-3xl lg:text-6xl">Contact our friendly team</p>
           <p className="[font-family:'Montserrat',Helvetica] mt-3 text-lg">
@@ -74,7 +74,7 @@ const ContactUs = () => {
             />
           </div>
 
-          <Button className="inline-flex w-[156px] rounded-lg mt-5 lg:mt-14 h-auto hover:inner-color-hover hover:!text-[#df9420] items-start gap-2.5 px-4 py-2.5 lg:px-6 lg:py-4 bg-[#f0f0f3] overflow-hidden shadow-neomorphic focus:shadow-neomorphic-hover hover:bg-[#f0f0f3]">
+          <Button className="inline-flex w-[156px] rounded-lg mt-5 lg:mt-10 h-auto hover:inner-color-hover hover:!text-[#df9420] items-start gap-2.5 px-4 py-2.5 lg:px-6 lg:py-4 bg-[#f0f0f3] overflow-hidden shadow-neomorphic focus:shadow-neomorphic-hover hover:bg-[#f0f0f3]">
             <span className="[font-family:'Montserrat',Helvetica] font-semibold text-black text-xl whitespace-nowrap">
               Submit
             </span>

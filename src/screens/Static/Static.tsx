@@ -50,7 +50,7 @@ export const Static = (): JSX.Element => {
   return (
     <div className="bg-[#f0f0f3]">
       <section
-        className="lg:min-h-screen relative bg-[#f0f0f3] overflow-hidden bg-stainless"
+        className="lg:h-screen relative bg-[#f0f0f3] overflow-hidden bg-stainless"
         style={{
           backgroundImage: "url(../../bg.png)",
         }}
@@ -58,7 +58,7 @@ export const Static = (): JSX.Element => {
         <motion.div initial="hidden" animate="visible" variants={SlideDown(0)}>
           <Header />
         </motion.div>
-        <div className="container flex flex-col lg:flex-row pt-[170px] pb-0 lg:pb-[170px] gap-8">
+        <div className="container flex flex-col lg:flex-row pt-[130px] pb-0 lg:pb-[170px] gap-8">
           <section className="lg:w-1/2">
             <motion.div
               // className=" w-1/2"
