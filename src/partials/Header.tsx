@@ -30,7 +30,7 @@ const Header = () => {
       {/* HEADER */}
       <header
         className={cn(
-          "fixed top-0 left-0 w-full h-[80px] bg-[linear-gradient(180deg,rgba(255,255,255,0.9)_0%,rgba(255,255,255,0)_100%)] z-[100] flex items-center transition-shadow duration-300",
+          "fixed top-0 left-0 w-full h-[90px] bg-[linear-gradient(180deg,rgba(255,255,255,0.9)_0%,rgba(255,255,255,0)_100%)] z-[100] flex items-center transition-shadow duration-300",
           isScrolled && "shadow-neomorphic bg-[#F0F0F3]"
         )}
       >
