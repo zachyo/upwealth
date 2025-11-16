@@ -67,7 +67,7 @@ export const Static = (): JSX.Element => {
               viewport={{ once: false, amount: 0.2 }}
               variants={SlideBounceFromUp(0.2)}
             >
-              <p className="text-[90px] leading-[120px]">
+              <p className="text-[90px] leading-[90px] lg:leading-[120px]">
                 Discover the Latest Issue of{" "}
                 <span className="bg-gradient-to-b from-[#D38D1A] from-40% to-[#343ADA] bg-clip-text text-transparent">
                   Upwealth

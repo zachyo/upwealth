@@ -95,7 +95,7 @@ const Carousel = () => {
       viewport={{ once: false, amount: 0.2 }}
       variants={SlideBounceFromDown(0.2)}
       ref={sliderRef}
-      className="relative h-[1062px]"
+      className="relative h-[300px] lg:h-[1062px]"
     >
       {circularMagazines.map((magazine, index) => {
         const isLarge = index === 2;

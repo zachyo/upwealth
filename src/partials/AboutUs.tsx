@@ -133,14 +133,14 @@ const AboutUs = () => {
           alt="Rectangle"
           className="h-full drop-shadow-md mt-16 scale-75"
         />
-        <div className="absolute w-full h-full inset-0 z-[90]">
+        <div className="absolute w-full h-full inset-0 z-[90] hidden sm:block">
           {smallMagazineCovers.map((cover, index) => (
             <CircularPoster key={index} {...cover} />
           ))}
         </div>
       </div>
 
-      <div className="!hidden absolute top-[147px] left-[792px] md:left-[700px] lg:left-[750px] xl:left-[792px] w-[395px] h-[562px] [perspective:1000px] z-20">
+      <div className="!hidden sm:absolute top-[147px] left-[792px] md:left-[700px] lg:left-[750px] xl:left-[792px] w-[395px] h-[562px] [perspective:1000px] z-20">
         <div className="absolute w-full h-[91%] top-[4%] left-[-60%] 2xl:left-0 bg-[#f0f0f3]" />
         <div className="absolute w-[392%] h-[105%] top-0 left-[-200%] 2xl:left-[-142%] flex scale-[0.85] md:scale-95 lg:scale-100">
           {smallMagazineCovers.map((cover, index) => (
