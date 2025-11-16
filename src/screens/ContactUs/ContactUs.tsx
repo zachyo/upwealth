@@ -23,7 +23,7 @@ const ContactUs = () => {
         <Header />
       </motion.div>
 
-      <div className="min-h-screen relative w-full overflow-hidden bg-transparent flex flex-col items-center justify-center rounded-lg">
+      <div className="min-h-screen relative w-full overflow-hidden bg-transparent flex flex-col items-center justify-center rounded-lg pt-16 2xl:pt-8">
         {/* <div className="absolute inset-0 w-full h-full bg-transparent z-20 [mask-image:radial-gradient(transparent,white)] pointer-events-none" /> */}
 
         <Boxes />
