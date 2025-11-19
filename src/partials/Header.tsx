@@ -91,44 +91,52 @@ const Header = () => {
       {/* SLIDE DOWN MOBILE MENU */}
       <div
         className={cn(
-          "fixed top-0 left-0 w-full h-screen bg-[#F0F0F3]/95 backdrop-blur-sm z-[200] p-6 pt-24 transition-transform duration-300",
+          "fixed top-0 left-0 w-full h-screen backdrop-blur-sm z-[200] transition-transform duration-300",
           mobileOpen ? "translate-y-0" : "-translate-y-full"
         )}
       >
-        {/* CLOSE ICON */}
         <div
-          className="absolute top-6 right-6 w-10 h-10 rounded-lg bg-[#f0f0f3] shadow-neomorphic flex items-center justify-center"
-          onClick={() => setMobileOpen(false)}
+          className="bg-[#f0f0f3] h-fit p-6 py-8 w-[90%] mx-auto [font-family:'Montserrat',Helvetica] shadow-mobile-nav rounded-b-2xl"
+          style={{
+            boxShadow:
+              "-1px -1px 2px 0 #fff,-5px -5px 11.5px 0 #fff,1px 1px 2px 0 #00000040,5px 5px 8.5px 0 #00000040",
+          }}
         >
-          <span className="text-2xl font-bold text-gray-500">×</span>
-        </div>
+          {/* CLOSE ICON */}
+          <div
+            className="absolute top-6 left-12 w-10 h-10 rounded-lg bg-[#f0f0f3] shadow-neomorphic flex items-center justify-center"
+            onClick={() => setMobileOpen(false)}
+          >
+            <span className="text-4xl font-bold text-gray-500">×</span>
+          </div>
 
-        {/* MENU TITLE */}
-        <h2 className="text-center text-xl font-semibold mb-8">Menu</h2>
+          {/* MENU TITLE */}
+          <h2 className="text-center text-xl font-semibold mb-12">Menu</h2>
 
-        <div className="flex flex-col gap-6 px-4">
-          {navigationItems.map((item, i) => (
+          <div className="flex flex-col gap-6 px-4">
+            {navigationItems.map((item, i) => (
+              <button
+                key={i}
+                onClick={() => {
+                  navigate(item.url);
+                  setMobileOpen(false);
+                }}
+                className="bg-[#f0f0f3] shadow-neomorphic py-2.5 rounded-xl text-base"
+              >
+                {item.label}
+              </button>
+            ))}
+
             <button
-              key={i}
               onClick={() => {
-                navigate(item.url);
+                navigate("/login");
                 setMobileOpen(false);
               }}
-              className="bg-[#f0f0f3] shadow-neomorphic py-4 rounded-xl text-lg"
+              className="bg-[#f0f0f3] shadow-neomorphic py-2.5 rounded-xl text-base text-purple-700 font-semibold"
             >
-              {item.label}
+              Login
             </button>
-          ))}
-
-          <button
-            onClick={() => {
-              navigate("/login");
-              setMobileOpen(false);
-            }}
-            className="bg-[#f0f0f3] shadow-neomorphic py-4 rounded-xl text-lg text-purple-700 font-semibold"
-          >
-            Login
-          </button>
+          </div>
         </div>
       </div>
     </>

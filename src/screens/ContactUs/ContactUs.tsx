@@ -23,7 +23,7 @@ const ContactUs = () => {
         <Header />
       </motion.div>
 
-      <div className="min-h-screen relative w-full overflow-hidden bg-transparent flex flex-col items-center justify-center rounded-lg pt-16 2xl:pt-8">
+      <div className="h-[min(100dvh,1400px)] relative w-full overflow-hidden bg-transparent flex flex-col items-center justify-center rounded-lg pt-16 2xl:pt-8">
         {/* <div className="absolute inset-0 w-full h-full bg-transparent z-20 [mask-image:radial-gradient(transparent,white)] pointer-events-none" /> */}
 
         <Boxes />
@@ -81,7 +81,7 @@ const ContactUs = () => {
           </Button>
         </motion.div>
 
-        <Button className="inline-flex absolute bottom-28 right-20 rounded-full mt-14 h-auto hover:inner-color-hover hover:!text-[#df9420] items-start gap-2.5 px-6 py-4 bg-[#f0f0f3] overflow-hidden shadow-neomorphic focus:shadow-neomorphic-hover hover:bg-[#f0f0f3]">
+        <Button className="inline-flex absolute bottom-28 right-20 aspect-square justify-center rounded-full mt-14 h-auto hover:inner-color-hover hover:!text-[#df9420] items-center gap-2.5 px-6 py-4 bg-[#f0f0f3] overflow-hidden shadow-neomorphic focus:shadow-neomorphic-hover hover:bg-[#f0f0f3]">
           <span className="[font-family:'Montserrat',Helvetica] font-semibold text-black text-xl whitespace-nowrap">
             <img src="../../../Vector (7).svg" alt="" />
           </span>
@@ -91,7 +91,7 @@ const ContactUs = () => {
       {/* Contact section with scroll animations */}
       <div
         ref={contactSectionRef}
-        className="flex flex-col lg:flex-row gap-8 container py-52 [font-family:'Montserrat',Helvetica]"
+        className="flex flex-col lg:items-center lg:flex-row gap-8 container py-52 [font-family:'Montserrat',Helvetica]"
       >
         {/* Title with fade in */}
         <motion.div

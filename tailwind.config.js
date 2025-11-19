@@ -77,7 +77,15 @@ module.exports = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
-    container: { center: true, padding: "2rem", screens: { "2xl": "1400px" } },
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1536px",
+        "3xl": "1920px", // add this
+        "4xl": "2200px",
+      },
+    },
   },
   plugins: [],
   darkMode: ["class"],

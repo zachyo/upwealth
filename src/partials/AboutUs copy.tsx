@@ -13,7 +13,7 @@ const smallMagazineCovers = [
     src: "/issue-3-e1680535874403-2.png",
     backSrc: "/priya.png",
     alt: "Issue cover",
-    containerClass: "sm:left-[1%] lg:left-[10%] sm:bottom-1/4 md:bottom-5 lg:bottom-0",
+    containerClass: "left-[10%] sm:bottom-1/4 md:bottom-5 lg:bottom-0",
     width: 80,
     height: 100,
     skew: "-6deg",
@@ -22,7 +22,7 @@ const smallMagazineCovers = [
     src: "/ed6-aug-e1692903238233-1-1.png",
     backSrc: "/alice.png",
     alt: "Aug cover",
-    containerClass: "sm:left-[1%] lg:left-[22%] top-1/4 lg:top-20",
+    containerClass: "left-[22%] top-1/4 lg:top-20",
     width: 88,
     height: 106,
     skew: "4deg",
@@ -31,7 +31,7 @@ const smallMagazineCovers = [
     src: "/staceyd-scaled-1.png",
     backSrc: "/stacy.png",
     alt: "Stacy cover",
-    containerClass: "sm:right-[1%] lg:right-[22%] top-1/4 lg:top-20",
+    containerClass: "right-[22%] top-1/4 lg:top-20",
     width: 89,
     height: 109,
     skew: "-3deg",
@@ -40,9 +40,9 @@ const smallMagazineCovers = [
     src: "/issue4-3-scaled-e1683690321238-2.png",
     backSrc: "/john.png",
     alt: "John cover",
-    containerClass: "sm:right-[1%] lg:right-[10%] sm:bottom-1/4 md:bottom-5 lg:bottom-0",
-    width: 92,
-    height: 108,
+    containerClass: "right-[10%] sm:bottom-1/4 md:bottom-5 lg:bottom-0",
+    width: 102,
+    height: 118,
     skew: "5deg",
   },
 ];
@@ -90,21 +90,14 @@ const AboutUs = () => {
 
   return (
     <section
-      className="relative bg-[#f0f0f3] container overflow-hidden"    
+      className="relative bg-[#f0f0f3] container overflow-hidden"
+      style={{
+        backgroundImage: "url(../aboutusbg.svg)",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        backgroundPosition: "top center",
+      }}
     >
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false, amount: 0.2 }}
-        variants={SlideBounceFromDown(0.2)}
-        className="absolute inset-0"
-        style={{
-          backgroundImage: "url(../aboutusbg.svg)",
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
-          backgroundPosition: "top center",
-        }}
-      ></motion.div>
       <div
         className="absolute inset-0 scale-75"
         style={{
@@ -114,7 +107,44 @@ const AboutUs = () => {
           backgroundPosition: "top center",
         }}
       ></div>
-      <div className="inset-0 w-full z-[12]">
+      {/* Semicircle Background */}
+      {/* <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.2 }}
+        variants={SlideBounceFromDown(0.2)}
+        className="absolute inset-0 flex z-0"
+      >
+        <div className="relative w-full max-w-[1700px] mx-auto aspect-[1/1.05] scale-[.7]">
+          <div className="absolute aspect-square w-[95%] lg:-top-[10%] left-1/2 -translate-x-1/2 bg-white/30 rounded-full border-2 border-dashed border-black/30" />
+          <div className="absolute aspect-square w-[69%] top-[7%] md:top-[9%]  lg:top-[4%] left-1/2 -translate-x-1/2 bg-white rounded-full shadow-lg opacity-50" />
+          <div className="absolute aspect-square w-[46%] top-[12%] md:top-[16%] lg:top-[18%] left-[28%] bg-white rounded-full shadow-lg" />
+        </div>
+      </motion.div> */}
+
+      {/* <motion.div
+        ref={textContainerRef}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.2 }}
+        variants={SlideBounceFromDown(0.4)}
+        className="absolute top-[8%] inset-0 flex flex-col space-y-2 z-10 mt-32 md:mt-44"
+      >
+        {Array(3)
+          .fill(0)
+          .map((_, i) => (
+            <div
+              key={i}
+              style={{
+                WebkitTextStroke: `3px rgba(0, 0, 0,${0.05 + i * 0.15})`,
+              }}
+              className="text-transparent  text-[clamp(4rem,12vw,19rem)] leading-[clamp(4.5rem,13vw,21rem)] text-center font-normal [font-family:'Bebas_Neue',Helvetica]"
+            >
+              UPWEALTH
+            </div>
+          ))}
+      </motion.div> */}
+      <div className="i inset-0 w-full z-[12]">
         <div className="flex relative w-full items-center justify-center">
           <img
             src="/slant.png"

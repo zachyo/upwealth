@@ -5,14 +5,10 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Header from "../../partials/Header";
 import AboutUs from "../../partials/AboutUs";
 import { motion } from "framer-motion";
-import {
-  SlideBounceFromUp,
-  SlideDown,
-} from "../../lib/animation";
+import { SlideBounceFromUp, SlideDown } from "../../lib/animation";
 import Carousel from "./Carousel";
 
 gsap.registerPlugin(ScrollTrigger);
-
 
 export const Static = (): JSX.Element => {
   const boxRef = useRef<HTMLDivElement>(null);
@@ -45,14 +41,14 @@ export const Static = (): JSX.Element => {
     );
   }, []);
 
-
-
   return (
     <div className="bg-[#f0f0f3]">
       <section
-        className="lg:h-screen relative bg-[#f0f0f3] overflow-hidden bg-stainless"
+        className="relative bg-[#f0f0f3] overflow-hidden bg-stainless h-[min(100dvh,1400px)]"
         style={{
           backgroundImage: "url(../../bg.png)",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
         }}
       >
         <motion.div initial="hidden" animate="visible" variants={SlideDown(0)}>
@@ -61,13 +57,13 @@ export const Static = (): JSX.Element => {
         <div className="container flex flex-col lg:flex-row pt-[130px] pb-0 lg:pb-[170px] gap-8">
           <section className="lg:w-1/2">
             <motion.div
-              // className=" w-1/2"
+              className="mt mt-9"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: false, amount: 0.2 }}
               variants={SlideBounceFromUp(0.2)}
             >
-              <p className="text-[90px] leading-[90px] lg:leading-[120px]">
+              <p className="text-[clamp(2.8rem,6vw,9rem)] leading-[clamp(3.2rem,7vw,10rem)]">
                 Discover the Latest Issue of{" "}
                 <span className="bg-gradient-to-b from-[#D38D1A] from-40% to-[#343ADA] bg-clip-text text-transparent">
                   Upwealth
@@ -87,7 +83,7 @@ export const Static = (): JSX.Element => {
               <br />
               <br />
               <br />
-              <Button className="inline-flex rounded-full h-auto hover:inner-color-hover hover:!text-[#df9420] items-start gap-2.5 px-6 py-4 bg-[#f0f0f3] overflow-hidden shadow-neomorphic focus:shadow-neomorphic-hover hover:bg-[#f0f0f3]">
+              <Button className="inline-flex rounded-full aspect-square h-auto hover:inner-color-hover hover:!text-[#df9420] items-center gap-2.5 px-6 py-4 bg-[#f0f0f3] overflow-hidden shadow-neomorphic focus:shadow-neomorphic-hover hover:bg-[#f0f0f3]">
                 <span className="[font-family:'Montserrat',Helvetica] font-semibold text-black text-xl whitespace-nowrap">
                   <img src="../../../Vector (7).svg" alt="" />
                 </span>
@@ -96,7 +92,7 @@ export const Static = (): JSX.Element => {
           </section>
 
           <section className="lg:w-1/2 pt-10">
-            <Carousel/>
+            <Carousel />
           </section>
         </div>
       </section>
