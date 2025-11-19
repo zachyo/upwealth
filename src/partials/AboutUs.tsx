@@ -106,7 +106,7 @@ const AboutUs = () => {
         }}
       ></motion.div>
       <div
-        className="absolute inset-0 scale-75"
+        className="absolute inset-0 scale-50 lg:scale-75"
         style={{
           backgroundImage: "url(../upwealthtext.svg)",
           backgroundRepeat: "no-repeat",

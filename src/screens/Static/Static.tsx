@@ -44,7 +44,7 @@ export const Static = (): JSX.Element => {
   return (
     <div className="bg-[#f0f0f3]">
       <section
-        className="relative bg-[#f0f0f3] overflow-hidden bg-stainless h-[min(100dvh,1400px)]"
+        className="relative bg-[#f0f0f3] overflow-hidden bg-stainless lg:h-[min(100dvh,1400px)]"
         style={{
           backgroundImage: "url(../../bg.png)",
           backgroundRepeat: "no-repeat",
